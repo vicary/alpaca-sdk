@@ -8,7 +8,7 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: get latest tag
@@ -18,16 +18,16 @@ jobs:
           latest_tag=$(git describe --tags --abbrev=0)
           echo "::set-output name=tag::$latest_tag"
       - name: setup deno
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: v1.x
+          deno-version: v2.x
       - name: build npm package
         run: |
           deno run -A ./build.ts ${{ steps.latest_tag.outputs.tag }}
       - name: setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: "14.x"
+          node-version: "22.x"
           registry-url: "https://registry.npmjs.org"
       - name: publish to npm
         run: |
