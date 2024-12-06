@@ -16,13 +16,13 @@ await build({
   scriptModule: false,
   declaration: "inline",
   package: {
-    name: "@alpacahq/typescript-sdk",
+    name: "@vicary/alpaca-sdk",
     version: Deno.args[0],
     description:
       "A TypeScript SDK for the https://alpaca.markets REST API and WebSocket streams.",
     repository: {
       type: "git",
-      url: "git+https://github.com/@alpacahq/typescript-sdk.git",
+      url: "git+https://github.com/@vicary/alpaca-sdk.git",
     },
     types: "./esm/mod.d.ts",
     keywords: [
