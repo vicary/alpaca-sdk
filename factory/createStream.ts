@@ -16,7 +16,7 @@ type CreateStreamOptions = {
   type: BaseURLKey;
   key?: string;
   secret?: string;
-  version?: "v2";
+  version?: string;
   feed?: "iex" | "sip";
   autoReconnect?: boolean;
   maxRetries?: number;
@@ -87,7 +87,7 @@ export const createStream = (options: CreateStreamOptions) => {
 
     socket.onopen = () => {
       console.debug(
-        "WebSocket connection established. Sending authentication message.",
+        "WebSocket connection established. Sending authentication message."
       );
 
       socket?.send(
@@ -95,7 +95,7 @@ export const createStream = (options: CreateStreamOptions) => {
           action: "auth",
           key: key,
           secret: secret,
-        }),
+        })
       );
     };
 
@@ -164,11 +164,11 @@ export const createStream = (options: CreateStreamOptions) => {
           data: {
             streams: Array.from(activeStreams),
           },
-        }),
+        })
       );
     } else {
       console.debug(
-        "Socket is not open or not authenticated. Cannot send listen message.",
+        "Socket is not open or not authenticated. Cannot send listen message."
       );
     }
   };
